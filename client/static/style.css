@@ -1,3 +1,16 @@
+.navLink {
+    padding: 5px;
+    text-decoration: none;
+    font-family: 'Lucida Grande',Arial,sans-serif; 
+    color: grey;    
+}
+
+#header {
+    font-family: 'Lucida Grande',Arial,sans-serif; 
+    color: grey;
+    text-align: center;
+}
+
 #story-form {
     margin: 5%;
     display: none;
@@ -47,4 +60,20 @@ textarea:focus {
 
 #all-posts {
     display: flex;
+    flex-direction: column;
+    padding: 10px;
+    font-family: 'Lucida Grande',Arial,sans-serif; 
+    color: grey;
+}
+
+h4{
+    padding: 10px 0 5px 0;
+}
+
+h4, h6, p {
+    margin: 0;
+}
+
+p { 
+    font-size: 12px;
 }
