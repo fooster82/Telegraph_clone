@@ -6,19 +6,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Telegraph Clone</title>
     <link rel="stylesheet" href="./static/style.css">
-    <script defer src="index.js"></script>
+    <link rel="icon" href="/assets/images/favicon.ico">
+    <script defer src="./static/index.js"></script>
 </head>
 <body>
-    <h1>Telegraph Clone</h1>
-    <form action="">
-        <div style="display: flex; flex-direction: row; justify-content: center;" >
-            <textarea id="title-textarea" name="title" placeholder="Title"></textarea>
-            <input id="button-input" type="button" value="PUBLISH"> 
+    <nav style="display: flex; justify-content:center;">
+        <div>
+            <a class="navLink" id="postLink" href="#posts">Posts</a>
+            <a class="navLink" id="createLink" href="#posts/new">Create</a>
         </div>
-        <div style="display: flex; flex-direction: column; justify-content: center;">
+    </nav>
+
+    <h2 id="header">Welcome to Telegraph Clone</h2>
+
+    <form id="story-form">
+        <div style="display: flex; flex-direction: column; justify-content: center;" >
+            <textarea id="title-textarea" name="title" placeholder="Title"></textarea>
             <textarea id="pseudo-textarea" name="psuedo" placeholder="Your pseudoname"></textarea>
             <textarea id="story-textarea" name="story" placeholder="Your story..."></textarea>
         </div>
+        <input id="button-input" type="submit" value="PUBLISH"> 
     </form>
+
+
+    <div id="all-posts">
+        <div>
+            <h4>Family Outing</h4>
+            <h6>Sandra</h6>
+            <p>I went for a walk with my family today, it was lovely!</p>
+        </div> 
+        <div>
+            <h4>New wine</h4>
+            <h6>Wine Lover</h6>
+            <p>Tried a new red today, very bitter</p>
+        </div>
+
+    </div>
+
 </body>
-</html>
+
+
+
+

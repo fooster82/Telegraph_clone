@@ -1,9 +1,27 @@
+.navLink {
+    padding: 5px;
+    text-decoration: none;
+    font-family: 'Lucida Grande',Arial,sans-serif; 
+    color: grey;    
+}
+
+#header {
+    font-family: 'Lucida Grande',Arial,sans-serif; 
+    color: grey;
+    text-align: center;
+}
+
+#story-form {
+    margin: 5%;
+    display: none;
+    flex-direction: row;
+    justify-content: center;
+}
+
 textarea {
     border-style: hidden;
     color: grey;
-    margin: 5px;
     width: 500px;
-    overflow-wrap: break-all;
     resize: none;
 }
 
@@ -16,6 +34,7 @@ textarea:focus {
 }
 
 #button-input {
+    align-self: baseline;
     font-family: 'Lucida Grande',Arial,sans-serif;
     font-weight: 600;
     font-style: normal;
@@ -26,7 +45,6 @@ textarea:focus {
     border-radius: 16px;
     text-transform: uppercase;
     padding: 4px 12px;
-    margin: 0 0 15px;
     background-color: #fff;
     cursor: pointer;
 }
@@ -37,4 +55,25 @@ textarea:focus {
 
 #story-textarea {
     font-size: 18px;
+    height: 250px;
+}
+
+#all-posts {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    font-family: 'Lucida Grande',Arial,sans-serif; 
+    color: grey;
+}
+
+h4{
+    padding: 10px 0 5px 0;
+}
+
+h4, h6, p {
+    margin: 0;
+}
+
+p { 
+    font-size: 12px;
 }

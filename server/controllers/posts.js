@@ -23,7 +23,7 @@ async function show(req, res) {
 // Create function - returns newly created book
 async function create(req, res) {
     try {
-        const post = await Post.create(req.body);
+        const post = await Post.create(req.body.title, req.body.pseudonym, req.body.body);
         res.status(201).json(post);
     } catch (err) {
         res.status(422).json({ err });
