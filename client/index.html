@@ -9,16 +9,12 @@
     <script defer src="index.js"></script>
 </head>
 <body>
-    <h1>Telegraph Clone</h1>
-    <form action="">
-        <div style="display: flex; flex-direction: row; justify-content: center;" >
+    <form id="story-form" action="">
+        <div style="display: flex; flex-direction: column; justify-content: center;" >
             <textarea id="title-textarea" name="title" placeholder="Title"></textarea>
-            <input id="button-input" type="button" value="PUBLISH"> 
-        </div>
-        <div style="display: flex; flex-direction: column; justify-content: center;">
             <textarea id="pseudo-textarea" name="psuedo" placeholder="Your pseudoname"></textarea>
             <textarea id="story-textarea" name="story" placeholder="Your story..."></textarea>
         </div>
+        <input id="button-input" type="button" value="PUBLISH"> 
     </form>
 </body>
-</html>

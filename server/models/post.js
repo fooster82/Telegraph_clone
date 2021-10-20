@@ -14,7 +14,7 @@ class Post {
             try {
                 const db = await init();
                 const postData = await db.collection('posts').find().toArray();
-                const allPosts = postData.map(p => new Post({ ...p, id: p._id }));
+                const allPosts = postData.map(p => new Post({ ...p, id: p.id }));
                 resolve(allPosts);
             } catch (err) {
                 reject('Unable to retrieve posts');
@@ -23,15 +23,15 @@ class Post {
     };
 
     // Find a post by an id
-    static findById(id) {
+    static findById(postId) {
         return new Promise(async (resolve, reject) => {
             try {
                 const db = await init();
-                let postData = await db.collection('posts').find({ id: `${id}` }).toArray();
+                let postData = await db.collection('posts').find({ id: postId }).toArray();
                 let post = new Post({ ...postData[0], id: postData[0].id });
                 resolve(post);
             } catch (err) {
-                reject(`Post ${id} not found`);
+                reject(`Post ${postId} not found`);
             };
         });
     };
