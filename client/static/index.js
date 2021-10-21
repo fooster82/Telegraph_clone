@@ -8,47 +8,19 @@ const postLink = document.getElementById('postLink')
 form.addEventListener('submit', createPost);
 getAll();
 
-// createLink.addEventListener('click', e => {
-//     e.preventDefault();
-//     console.log("create clicked")
-//     header.style.display = "none";
-//     form.style.display = "flex";
-//     posts.style.display = "none";
-// })
+createLink.addEventListener('click', e => {
+    e.preventDefault();
+    header.style.display = "none";
+    form.style.display = "flex";
+    posts.style.display = "none";
+});
 
-// postLink.addEventListener('click', e => {
-//     e.preventDefault();
-//     console.log("post clicked");
-//     header.style.display = "block";
-//     form.style.display = "none";
-//     posts.style.display = "block";
-// })
-
-
-// const buttonInput = document.getElementById('button-input')
-
-// form.addEventListener('submit', e => {
-//    e.preventDefault()
-//    createPost(e)
-// })
-
-
-
-
-// function createPost(e) {
-//     e.preventDefault();
-//        const newPost = { title: e.target[0].value, pseudonym: e.target[1].value, body: e.target[2].value}
-//        const options = {
-//        method: "POST",
-//        body: JSON.stringify(newPost),
-//        headers: {"Content-Type": "application/json; charset=UTF-8"}       
-//        }
-//        fetch('http://localhost:3000/posts', options)
-//           .then(r => r.json())
-//           .then(appendPost)
-//           .then(() => e.target.reset())
-//           .catch(console.warn)
-// }
+postLink.addEventListener('click', e => {
+    e.preventDefault();
+    header.style.display = "block";
+    form.style.display = "none";
+    posts.style.display = "block";
+});
 
 async function getAll() {
     try {
@@ -106,7 +78,6 @@ async function createPost(e) {
 
         const response = await fetch('http://localhost:3000/posts', options);
         const data = await response.json();
-        console.log(data)
     } catch (err) {
         console.warn(err);
     };
