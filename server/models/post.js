@@ -42,9 +42,11 @@ class Post {
             try {
                 const db = await init();
                 let postData = await db.collection('posts').insertOne({ title, pseudonym, body });
+                console.log(postData)
                 let newPost = new Post(postData.ops[0]);
                 resolve(newPost);
             } catch (err) {
+                console.log("ERROR", err)
                 reject('Unable to create new post');
             };
         });
