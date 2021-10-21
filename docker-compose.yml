@@ -19,7 +19,7 @@ services:
     ports: 
       - 3000:3000
     environment: 
-      - DB_NAME=posts
+      - DB_NAME=telegraph
       - DB_CONNECTION=mongodb://telegraphuser:telegraphpass@db:27017
     depends_on:
       - db
@@ -34,10 +34,10 @@ services:
     image: mongo:latest
     volumes:
       - "dbdata:/var/lib/mongodb/data"
-      - "./server/db/seed.js:/docker-entrypoint-initdb.d/seed.js:ro"
+      - "./db/seed.js:/docker-entrypoint-initdb.d/seed.js:ro"
     environment: 
       - MONGO_INITDB_ROOT_USERNAME=telegraphuser
-      - MONGO_INITDB_DATABASE=posts
+      - MONGO_INITDB_DATABASE=telegraph
       - MONGO_INITDB_ROOT_PASSWORD=telegraphpass
 volumes:
   dbdata:

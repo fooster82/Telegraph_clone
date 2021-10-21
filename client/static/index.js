@@ -1,14 +1,16 @@
-// const header = document.getElementById('header')
-// const posts = document.getElementById('all-posts')
+const header = document.getElementById('header')
+const posts = document.getElementById('all-posts')
 const form = document.getElementById('story-form')
 
-// const createLink = document.getElementById('createLink')
-// const postLink = document.getElementById('postLink')
+const createLink = document.getElementById('createLink')
+const postLink = document.getElementById('postLink')
 
-form.addEventListener('submit', addPost);
+form.addEventListener('submit', createPost);
+getAll();
 
 // createLink.addEventListener('click', e => {
 //     e.preventDefault();
+//     console.log("create clicked")
 //     header.style.display = "none";
 //     form.style.display = "flex";
 //     posts.style.display = "none";
@@ -16,6 +18,7 @@ form.addEventListener('submit', addPost);
 
 // postLink.addEventListener('click', e => {
 //     e.preventDefault();
+//     console.log("post clicked");
 //     header.style.display = "block";
 //     form.style.display = "none";
 //     posts.style.display = "block";
@@ -30,9 +33,7 @@ form.addEventListener('submit', addPost);
 // })
 
 
-// function getAll() {
 
-// }
 
 // function createPost(e) {
 //     e.preventDefault();
@@ -49,42 +50,73 @@ form.addEventListener('submit', addPost);
 //           .catch(console.warn)
 // }
 
-function addPost(e) {
-    e.preventDefault();
-    console.log("button clicked")
-    // const title = e.target.titlebox.value
-    // const name = e.target.authorbox.value
-    // const body = e.target.story.value
-    // const img = e.target.chosefile.value
-    const content = {
-        title: e.target[0].value,
-        name: e.target[1].value,
-        body: e.target[2].value,
+async function getAll() {
+    try {
+        const response = await fetch('http://localhost:3000/posts');
+        const data = await response.json();
+        const postSection = document.getElementById('all-posts');
+        for (let i = 0; i < data.length; i++) {
+            let newDiv = docuemnt.createElement('div')
+            let postTitle = document.createElement('h4');
+            let postPseudonym = document.createElement('h6');
+            let postBody = document.createElement('p');
 
-    }
-    const methods = {
-        method: 'POST',
-        body: JSON.stringify(content),
-        headers: { "Content-Type": "application/json" }
+            newDiv.id = `post${i}`;
+            postTitle.textContent = data[i].title;
+            postPseudonym.textContent = data[i].pseudonym;
+            postBody.textContent = data[i].body;
+
+            newDiv.append(postTitle)
+            newDiv.append(postPseudonym)
+            newDiv.append(postBody)
+
+            postSection.append(newDiv)
+            console.log("post added")
+        }
+        return data;
+    } catch (err) {
+        console.warn(err);
     };
+};
 
+async function getPost(postId) {
+    try {
+        const response = await fetch(`http://localhost:3000/posts/${postId}`);
+        const data = await response.json();
+        return data;
+    } catch (err) {
+        console.warn(err);
+    };
+};
 
-    fetch('http://localhost:3000/posts', methods)
-        .then(res => res.json())
-        // .then(appendSinglePost)
-        .then(() => e.target.reset())
-        .then(() => location.reload())
-        .catch(console.warn)
+async function createPost(e) {
+    e.preventDefault();
+    try {
+        const newPost = {
+            title: e.target[0].value,
+            pseudonym: e.target[1].value,
+            body: e.target[2].value,
+        };
 
-    console.log(content)
-}
+        const options = {
+            method: 'POST',
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(newPost)
+        };
 
+        const response = await fetch('http://localhost:3000/posts', options);
+        const data = await response.json();
+        console.log(data)
+    } catch (err) {
+        console.warn(err);
+    };
+};
 
-// function appendPosts(data){
+// function appendPosts(data) {
 //     data.posts.forEach(appendPost);
 // };
 
-// function appendPost(postData){
+// function appendPost(postData) {
 //     const newDiv = document.createElement('div')
 //     const newTitle = document.createElement('h2');
 //     const newName = document.createElement('h4');

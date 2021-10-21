@@ -2,7 +2,7 @@ services:
   api:
     container_name: telegraph_test_api
     environment: 
-      - DB_NAME=posts_test
+      - DB_NAME=telegraph_test
       - DB_CONNECTION=mongodb://telegraphuser:telegraphpass@db:27017
       - NODE_ENV=test
     depends_on:
@@ -14,7 +14,7 @@ services:
       - "test_db:/var/lib/mongodb/data"
     environment: 
       - MONGO_INITDB_ROOT_USERNAME=telegraphuser
-      - MONGO_INITDB_DATABASE=posts_test
+      - MONGO_INITDB_DATABASE=telegraph_test
       - MONGO_INITDB_ROOT_PASSWORD=telegraphpass
 volumes:
   test_db:
